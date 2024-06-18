@@ -1,4 +1,6 @@
-export const playAnimation = (animation: gsap.core.Tween) => {
+export const playAnimation = (
+  animation: gsap.core.Tween | gsap.core.Timeline,
+) => {
   animation.restart()
 }
 

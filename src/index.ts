@@ -1,13 +1,27 @@
 /* eslint-disable no-console */
-import gsap from 'gsap'
-
+import {
+  control_animation,
+  from_animation,
+  fromTo_animation,
+  parameters_animation,
+  timeline_animation,
+  tl_parameters_animation,
+  to_animation,
+} from './animations'
 import { playAnimation, selectButton } from './utils'
 
 window.Webflow ||= []
 window.Webflow.push(() => {
-  const playButtonIds = ['#play_to', '#play_from', '#play_fromTo']
+  const animations = {
+    '#play_to': to_animation,
+    '#play_from': from_animation,
+    '#play_fromTo': fromTo_animation,
+    '#play_parameters': parameters_animation,
+    '#play_timeline': timeline_animation(),
+    '#play_tl_parameters': tl_parameters_animation(),
+  }
 
-  const playButtons = playButtonIds.reduce(
+  const playButtons = Object.keys(animations).reduce(
     (acc, id) => {
       acc[id] = selectButton(id)
       return acc
@@ -15,49 +29,27 @@ window.Webflow.push(() => {
     {} as { [key: string]: HTMLButtonElement },
   )
 
-  const to_animation = gsap.to('#cube_to', {
-    x: '10rem',
-    duration: 1,
-    ease: 'power2.inOut',
-    backgroundColor: 'blue',
-    paused: true,
-  })
-  const from_animation = gsap.from('#cube_from', {
-    x: '10rem',
-    duration: 1,
-    ease: 'power2.inOut',
-    backgroundColor: 'blue',
-    paused: true,
-  })
-  const fromTo_animation = gsap.fromTo(
-    '#cube_fromTo',
-    {
-      x: '10rem',
-      duration: 1,
-      ease: 'power2.inOut',
-      backgroundColor: 'blue',
-      paused: true,
-    },
-    {
-      x: '-10rem',
-      duration: 1,
-      ease: 'power2.inOut',
-      backgroundColor: 'green',
-      paused: true,
-    },
-  )
-
-  const animations = {
-    '#play_to': to_animation,
-    '#play_from': from_animation,
-    '#play_fromTo': fromTo_animation,
-  }
-
   //Set Listeners
   Object.keys(animations).forEach((id) => {
     const key = id as keyof typeof animations
     playButtons[key].addEventListener('click', () =>
       playAnimation(animations[key]),
     )
+  })
+
+  //for control animation
+  const control_animations = {
+    '#control_play': () => control_animation.play(),
+    '#control_pause': () => control_animation.pause(),
+    '#control_resume': () => control_animation.resume(),
+    '#control_reverse': () => control_animation.reverse(),
+    '#control_restart': () => control_animation.restart(),
+  }
+
+  //Set Control Listeners
+
+  Object.keys(control_animations).forEach((id) => {
+    const key = id as keyof typeof control_animations
+    selectButton(key).addEventListener('click', control_animations[key])
   })
 })
