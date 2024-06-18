@@ -1,5 +1,11 @@
 # @tiph-test/gsap-playground
 
+## 0.2.0
+
+### Minor Changes
+
+- c005c7b: ✨ Add animations
+
 ## 0.1.0
 
 ### Minor Changes
