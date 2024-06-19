@@ -8,6 +8,7 @@ import {
   tl_parameters_animation,
   to_animation,
 } from './animations'
+import { createScrollAnimations } from './scroll_animations'
 import { playAnimation, selectButton } from './utils'
 
 window.Webflow ||= []
@@ -21,22 +22,6 @@ window.Webflow.push(() => {
     '#play_tl_parameters': tl_parameters_animation(),
   }
 
-  const playButtons = Object.keys(animations).reduce(
-    (acc, id) => {
-      acc[id] = selectButton(id)
-      return acc
-    },
-    {} as { [key: string]: HTMLButtonElement },
-  )
-
-  //Set Listeners
-  Object.keys(animations).forEach((id) => {
-    const key = id as keyof typeof animations
-    playButtons[key].addEventListener('click', () =>
-      playAnimation(animations[key]),
-    )
-  })
-
   //for control animation
   const control_animations = {
     '#control_play': () => control_animation.play(),
@@ -46,10 +31,21 @@ window.Webflow.push(() => {
     '#control_restart': () => control_animation.restart(),
   }
 
-  //Set Control Listeners
+  //Set Listeners
+  Object.keys(animations).forEach((id) => {
+    const key = id as keyof typeof animations
 
+    selectButton(key).addEventListener('click', () =>
+      playAnimation(animations[key]),
+    )
+  })
+
+  //Set Control Listeners
   Object.keys(control_animations).forEach((id) => {
     const key = id as keyof typeof control_animations
-    selectButton(key).addEventListener('click', control_animations[key])
+
+    selectButton(id).addEventListener('click', control_animations[key])
   })
+
+  createScrollAnimations()
 })
