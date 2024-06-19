@@ -1,5 +1,11 @@
 # @tiph-test/gsap-playground
 
+## 0.3.0
+
+### Minor Changes
+
+- 5e5cca0: Add Scroll Animations
+
 ## 0.2.0
 
 ### Minor Changes
