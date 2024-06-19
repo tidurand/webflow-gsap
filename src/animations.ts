@@ -14,7 +14,6 @@ export const from_animation = gsap.from('#cube_from', {
   ease: 'power2.inOut',
   backgroundColor: 'blue',
   paused: true,
-  immediateRender: false,
 })
 
 export const fromTo_animation = gsap.fromTo(
@@ -25,12 +24,15 @@ export const fromTo_animation = gsap.fromTo(
     ease: 'power2.inOut',
     backgroundColor: 'blue',
     paused: true,
+    // immediateRender: false,
   },
   {
     x: '-10rem',
     duration: 1,
     ease: 'power2.inOut',
     backgroundColor: 'red',
+    paused: true,
+    // immediateRender: false,
   },
 )
 
