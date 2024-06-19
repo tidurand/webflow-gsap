@@ -24,7 +24,6 @@ export const fromTo_animation = gsap.fromTo(
     ease: 'power2.inOut',
     backgroundColor: 'blue',
     paused: true,
-    // immediateRender: false,
   },
   {
     x: '-10rem',
@@ -32,7 +31,6 @@ export const fromTo_animation = gsap.fromTo(
     ease: 'power2.inOut',
     backgroundColor: 'red',
     paused: true,
-    // immediateRender: false,
   },
 )
 

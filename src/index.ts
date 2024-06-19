@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+import gsap from 'gsap'
+
 import {
   control_animation,
   from_animation,
@@ -45,6 +47,22 @@ window.Webflow.push(() => {
     const key = id as keyof typeof control_animations
 
     selectButton(id).addEventListener('click', control_animations[key])
+  })
+
+  const buttons = document.querySelectorAll('.button_play')
+
+  buttons.forEach((button) => {
+    const play_animation = gsap.to(button, {
+      backgroundImage:
+        'radial-gradient(circle, rgba(255,255,255) 50%, rgba(116,116,116) 90%)',
+      duration: 1,
+      ease: 'power2.out',
+      paused: true,
+    })
+    button.addEventListener('mouseenter', () => play_animation.play())
+    button.addEventListener('mouseleave', () =>
+      play_animation.reverse().duration(0.5),
+    )
   })
 
   createScrollAnimations()
