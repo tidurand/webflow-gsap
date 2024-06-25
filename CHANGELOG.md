@@ -1,5 +1,11 @@
 # @tiph-test/gsap-playground
 
+## 1.0.0
+
+### Major Changes
+
+- 4c1fd7d: V1
+
 ## 0.3.0
 
 ### Minor Changes
