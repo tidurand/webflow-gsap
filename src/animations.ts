@@ -50,8 +50,8 @@ export const timeline_animation = () => {
   const tl = gsap.timeline({ paused: true })
   const id = '#cube_timeline'
 
-  tl.to(id, { y: -100, duration: 1 })
-  tl.to(id, { x: 150, duration: 1 })
+  tl.to(id, { y: '-6.25rem', duration: 1 })
+  tl.to(id, { x: '10rem', duration: 1 })
   tl.to(id, { y: 0, duration: 1 })
   tl.to(id, { x: 0, duration: 1 })
 
@@ -67,8 +67,8 @@ export const tl_parameters_animation = () => {
   })
   const id = '#cube_tl_parameters'
 
-  tl.to(id, { y: -100 })
-  tl.to(id, { x: 150 }, 0)
+  tl.to(id, { y: '-6.25rem' })
+  tl.to(id, { x: '10rem' }, 0)
   tl.to(id, { y: 0 })
   tl.to(id, { x: 0 })
 
