@@ -24,7 +24,6 @@ window.Webflow.push(() => {
     '#play_tl_parameters': tl_parameters_animation(),
   }
 
-  //for control animation
   const control_animations = {
     '#control_play': () => control_animation.play(),
     '#control_pause': () => control_animation.pause(),
@@ -49,6 +48,7 @@ window.Webflow.push(() => {
     selectButton(id).addEventListener('click', control_animations[key])
   })
 
+  //Set Play Button Hover Animation
   const buttons = document.querySelectorAll('.button_play')
 
   buttons.forEach((button) => {
